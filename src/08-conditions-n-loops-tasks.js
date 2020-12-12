@@ -267,8 +267,20 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  let res = 0;
+  const a = `${ccn}`;
+  for (let i = 0; i < a.length; i += 1) {
+    let x = parseInt(a[i], 10);
+    if ((a.length - i) % 2 === 0) {
+      x *= 2;
+      if (x > 9) {
+        x -= 9;
+      }
+    }
+    res += x;
+  }
+  return res % 10 === 0;
 }
 
 /**
@@ -356,8 +368,20 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
+function getCommonDirectoryPath(pathes) {
+  let a = pathes[0];
+  let str = '';
+  for (let i = 1; i < pathes.length; i += 1) {
+    for (let j = 0; j <= a.lastIndexOf('/'); j += 1) {
+      if (a[j] === pathes[i][j]) {
+        str += (a[j]);
+      } else {
+        a = str;
+        str = '';
+      }
+    }
+  }
+  return str;
 }
 
 
