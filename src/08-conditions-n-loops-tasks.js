@@ -312,8 +312,13 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  let a = str;
+  while (true) {
+    const res = a.replace(/\(\)|\[\]|\{\}|<>/, '');
+    if (res === a) return res.length === 0;
+    a = res;
+  }
 }
 
 
@@ -377,8 +382,14 @@ function getCommonDirectoryPath(/* pathes */) {
  *                         [ 6 ]]
  *
  */
-function getMatrixProduct(/* m1, m2 */) {
-  throw new Error('Not implemented');
+function getMatrixProduct(m1, m2) {
+  return m1.map((a) => {
+    const mas = [];
+    for (let i = 0; i < m1.length; i += 1) {
+      mas.push(a.reduce((x, y, z) => x + y * m2[z][i], 0));
+    }
+    return mas;
+  });
 }
 
 
